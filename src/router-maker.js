@@ -2,6 +2,10 @@ const makeHandle = type => (func) => {
   const get = require('get-parameter-names')
   const names = get(func)
   return async (req, res) => {
+    if (!res.tryOrFail) {
+      require('./response-decorator')(null, res)
+    }
+
     console.log(type === 'query' ? req.query : req.body)
 
     // 来自req.query或者req.body
@@ -26,8 +30,6 @@ const makeHandles = (method) =>
 const makeRouter = (controller) => {
   const express = require('express')
   const router = express.Router()
-
-  router.use(require('./response-decorator'))
 
   Object.keys(controller).forEach(method => {
     Object.keys(controller[method]).forEach(key => {

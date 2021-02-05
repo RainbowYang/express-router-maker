@@ -1,4 +1,4 @@
-module.exports = (req, res, next) => {
+module.exports = (req, res, next = () => {}) => {
   // 发送成功数据
   res.success = (data = {}) => {
     res.json({ success: true, ...data })
