@@ -24,7 +24,7 @@ const makePostHandle = makeHandle('body')
 
 const makeHandles = (method) =>
   method === 'get'
-    ? makeGetHandle()
+    ? makeGetHandle
     : makePostHandle
 
 const makeRouter = (controller) => {
