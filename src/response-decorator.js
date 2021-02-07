@@ -1,4 +1,5 @@
 module.exports = (req, res, next = () => {}) => {
+
   // 发送成功数据
   res.success = (data = {}) => {
     res.json({ success: true, ...data })
@@ -9,11 +10,12 @@ module.exports = (req, res, next = () => {}) => {
     res.json({ success: false, error })
   }
 
-  // 当产生错误时，请求直接返回
+  // 尝试运行一个函数。当产生错误时，使用res.fail直接返回错误
   // 可以接收一个普通函数或者异步函数，或者一个Promise
   res.tryOrFail = async (fn) => {
     try {
       let result = fn
+
       while (result instanceof Function) {
         result = result()
       }
@@ -28,6 +30,7 @@ module.exports = (req, res, next = () => {}) => {
       }
 
       return result
+
     } catch (e) {
       res.fail(e)
       console.log(e)
@@ -37,7 +40,11 @@ module.exports = (req, res, next = () => {}) => {
 
   res.tryOrFailSync = (fn) => {
     try {
-      return typeof fn == 'function' ? fn() : fn
+      let result = fn
+      while (result instanceof Function) {
+        result = result()
+      }
+      return result
     } catch (e) {
       res.fail(e)
       console.log(e)

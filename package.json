@@ -1,7 +1,7 @@
 {
   "name": "express-router-maker",
-  "version": "1.0.4",
-  "description": "",
+  "version": "1.0.6",
+  "description": "这是一个用于简化express中router的工具",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
