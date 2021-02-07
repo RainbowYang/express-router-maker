@@ -20,7 +20,10 @@ module.exports = (req, res, next = () => {}) => {
       while (result instanceof Promise) {
         result = await result
       }
-      while (result instanceof Array) {
+      while (
+        result instanceof Array &&
+        result.some(x => x instanceof Promise)
+        ) {
         result = await Promise.all(result)
       }
 
