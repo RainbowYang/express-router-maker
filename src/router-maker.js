@@ -15,7 +15,11 @@ const makeHandle = type => (func) => {
       ? [reqData]
       : names.map(name => reqData[name])
 
-    res.success({ ...await res.tryOrFail(() => func.apply(null, args)) })
+    try {
+      res.success({ ...await res.tryOrFail(() => func.apply(null, args)) })
+    } catch (e) {
+      // 错误已在tryOrFail中处理
+    }
   }
 }
 
