@@ -15,7 +15,7 @@ const makeHandle = type => (func) => {
       ? [reqData]
       : names.map(name => reqData[name])
 
-    res.success({ ...await res.tryOrFail(func.apply(null, args)) })
+    res.success({ ...await res.tryOrFail(() => func.apply(null, args)) })
   }
 }
 
