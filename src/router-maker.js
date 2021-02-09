@@ -43,7 +43,8 @@ const makeRouter = (controller, router) => {
     method = method.toLowerCase()
     Object.keys(controller[method]).forEach(path => {
       const handleFunction = controller[method][path]
-      router[method]('/' + path, makeHandleOf(method)(handleFunction))
+      path = path.startsWith('/') ? path : '/' + path
+      router[method](path, makeHandleOf(method)(handleFunction))
     })
   })
 
