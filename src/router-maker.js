@@ -58,8 +58,9 @@ const combineRouter = (pathToController, router) => {
   }
 
   Object.keys(pathToController).forEach(path => {
+    const controller = pathToController[path]
     path = path.startsWith('/') ? path : '/' + path
-    router.use(path, makeRouter(pathToController[path]))
+    router.use(path, makeRouter(controller))
   })
 
   return router
