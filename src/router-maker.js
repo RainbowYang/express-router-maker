@@ -51,9 +51,24 @@ const makeRouter = (controller, router) => {
   return router
 }
 
+const combineRouter = (pathToController, router) => {
+  if (!router) {
+    const express = require('express')
+    router = express.Router()
+  }
+
+  Object.keys(pathToController).forEach(path => {
+    path = path.startsWith('/') ? path : '/' + path
+    router.use(path, makeRouter(pathToController[path]))
+  })
+
+  return router
+}
+
 exports.makeGetHandle = makeGetHandle
 exports.makePostHandle = makePostHandle
 
 exports.makeRouter = makeRouter
+exports.combineRouter = combineRouter
 
 

@@ -1,6 +1,6 @@
 {
   "name": "express-router-maker",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "这是一个用于简化express中router的工具",
   "main": "index.js",
   "scripts": {
