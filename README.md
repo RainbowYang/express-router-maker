@@ -35,7 +35,7 @@ router.get('/GET_Path', (req, res) => {
   // 然后用这些参数执行`处理函数`
   // 最后用res.json返回执行 `处理函数` 的结果
 })
-router.post('/postPath', (req, res) => {
+router.post('/POST_Path', (req, res) => {
   // 同上
 })
 
