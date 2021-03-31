@@ -1,13 +1,13 @@
 {
   "name": "express-router-maker",
-  "version": "1.0.10",
-  "description": "这是一个用于简化express中router的工具",
+  "version": "1.0.11",
+  "description": "在RESTful风格中，可以简化express的router的书写，同时也更适应函数式编程的风格。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["express"],
+  "author": "Rainbow Yang",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
